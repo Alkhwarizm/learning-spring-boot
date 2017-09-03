@@ -28,4 +28,8 @@ public class StudentServices {
     public void updateStudent(StudentDTO student) {
         this.studentDAO.updateStudent(student);
     }
+
+    public void insertStudent(StudentDTO student) {
+        this.studentDAO.insertStudent(student);
+    }
 }

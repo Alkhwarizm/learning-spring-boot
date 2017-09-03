@@ -40,4 +40,8 @@ public class StudentDAO {
         updatedStudent.setName(student.getName());
         this.students.put(student.getId(), student);
     }
+
+    public void insertStudent(StudentDTO student) {
+        this.students.put(student.getId(), student);
+    }
 }

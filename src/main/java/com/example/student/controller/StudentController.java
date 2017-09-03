@@ -34,4 +34,9 @@ public class StudentController {
     public void updateStudent(@RequestBody StudentDTO student) {
         this.studentServices.updateStudent(student);
     }
+
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void insertStudent(@RequestBody StudentDTO student) {
+        this.studentServices.insertStudent(student);
+    }
 }
