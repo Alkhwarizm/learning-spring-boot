@@ -1,47 +1,17 @@
 package com.example.student.dao;
 
 import com.example.student.entity.StudentDTO;
-import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
-@Repository
-public class StudentDAO {
+public interface StudentDAO {
+    Collection<StudentDTO> getAllStudents();
 
-    private static Map<Integer, StudentDTO> students;
+    StudentDTO getStudentById(int id);
 
-    static {
-        students = new HashMap<Integer, StudentDTO>() {
-            {
-                put(1, new StudentDTO(1, "Andi", "Maths"));
-                put(2, new StudentDTO(2, "Bob", "Physics"));
-                put(3, new StudentDTO(3, "Chloe", "Chemistry"));
-            }
-        };
-    }
+    void deleteStudentById(int id);
 
-    public Collection<StudentDTO> getAllStudents() {
-        return this.students.values();
-    }
+    void updateStudent(StudentDTO student);
 
-    public StudentDTO getStudentById(int id) {
-        return this.students.get(id);
-    }
-
-    public void deleteStudentById(int id) {
-        this.students.remove(id);
-    }
-
-    public void updateStudent(StudentDTO student) {
-        StudentDTO updatedStudent = this.students.get(student.getId());
-        updatedStudent.setCourse(student.getCourse());
-        updatedStudent.setName(student.getName());
-        this.students.put(student.getId(), student);
-    }
-
-    public void insertStudent(StudentDTO student) {
-        this.students.put(student.getId(), student);
-    }
+    void insertStudent(StudentDTO student);
 }

@@ -3,6 +3,7 @@ package com.example.student.service;
 import com.example.student.dao.StudentDAO;
 import com.example.student.entity.StudentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -11,6 +12,7 @@ import java.util.Collection;
 public class StudentServices {
 
     @Autowired
+    @Qualifier("mongoData")
     private StudentDAO studentDAO;
 
     public Collection<StudentDTO> getAllStudents() {
