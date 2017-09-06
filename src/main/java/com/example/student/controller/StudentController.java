@@ -15,27 +15,27 @@ public class StudentController {
     @Autowired
     private StudentServices studentServices;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public Collection<StudentDTO> getAllStudents()  {
         return this.studentServices.getAllStudents();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public StudentDTO getStudentById(@PathVariable("id") int id) {
         return this.studentServices.getStudentById(id);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/{id}")
     public void deleteStudentById(@PathVariable("id") int id) {
         this.studentServices.deleteStudentById(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateStudent(@RequestBody StudentDTO student) {
         this.studentServices.updateStudent(student);
     }
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public void insertStudent(@RequestBody StudentDTO student) {
         this.studentServices.insertStudent(student);
     }
